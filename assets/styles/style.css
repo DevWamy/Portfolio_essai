@@ -31,6 +31,24 @@ body {
     transition: 0.7s ease-in-out;
 }
 
+.wrapper {
+    perspective: 900px;
+}
+
+.appear {
+    opacity: 0;
+    transform: translateY(100%) rotateX(-80deg);
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transition: 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.appear.is-inview {
+    transition-delay: 1s;
+    opacity: 1;
+    transform: none;
+}
+
 h2 {
     font-size: calc(48px + 5vw);
     text-align: center;
@@ -105,11 +123,15 @@ a:hover::after {
     width: 70%;
     margin: 0 auto;
     background: #000101;
-    opacity: 0;
-    /* transform: scaleX(0); */
     transition: 1s cubic-bezier(0.77, 0, 0.18, 1);
-    transform-origin: left;
     transition-delay: 0.65s;
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.line-wrapper.is-inview .line {
+    opacity: 1;
+    transform: scaleX(1);
 }
 
 /* Paramètres par ordre d'apparition */
@@ -126,6 +148,10 @@ header {
     justify-content: space-between;
 }
 
+#h1-wrapper {
+    transition-delay: 0.3s;
+}
+
 h1 {
     font-size: calc(32px + 8vw);
     margin-top: 70px;
@@ -138,6 +164,13 @@ header h2 {
     font-size: calc(16px + 6.5vw);
     margin: 18px 0;
     text-align: left;
+}
+
+#h2-1 {
+    transition-delay: 0.9s;
+}
+#h2-2 {
+    transition-delay: 1.2s;
 }
 
 .scroll-wrapper {
@@ -189,8 +222,8 @@ header h2 {
 }
 
 .skills .appear {
-    transition-delay: 0.6s;
     text-align: center;
+    transition-delay: 0.6s;
 }
 
 .skills p {
@@ -216,6 +249,21 @@ header h2 {
     width: 60vw;
     max-width: 600px;
     margin: 50px 5vw;
+}
+
+.project::before {
+    content: '';
+    position: absolute;
+    height: 110%;
+    width: 100%;
+    top: -3px;
+    background: #fefeff;
+    transition: width 1s ease-out;
+    transition-delay: 0.85s;
+}
+
+.project.is-inview::before {
+    width: 0;
 }
 
 #p2 {
@@ -267,6 +315,13 @@ footer p {
     font-size: calc(16px + 2vw);
     text-align: center;
     margin: 25px 0;
+}
+
+#l2 {
+    transition-delay: 1.2s;
+}
+#l3 {
+    transition-delay: 1.6s;
 }
 
 footer a {
